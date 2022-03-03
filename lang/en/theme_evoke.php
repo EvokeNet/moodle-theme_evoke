@@ -264,3 +264,5 @@ $string['portfoliograding'] = 'Portfolio grading';
 
 $string['groupchat'] = 'Group chat';
 $string['superpowers'] = 'Superpowers';
+
+$string['legacylogin'] = 'Legacy login';
