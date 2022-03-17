@@ -465,15 +465,6 @@ class core_renderer extends \core_renderer {
             $isgameenabled = false;
             if (class_exists(\local_evokegame\util\user::class) && $this->page->course->id > 1 && \local_evokegame\util\game::is_enabled_in_course($this->page->course->id)) {
                 $isgameenabled = true;
-
-                // Adds username to the first item of usermanu.
-                $userinfo = new stdClass();
-                $userinfo->itemtype = 'text';
-                $userinfo->title = fullname($user);
-                $userinfo->url = $evokeprofileurl;
-                $userinfo->pix = 'i/user';
-
-                array_unshift($opts->navitems, $userinfo);
             }
 
             foreach ($opts->navitems as $value) {
