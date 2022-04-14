@@ -468,11 +468,17 @@ class core_renderer extends \core_renderer {
             }
 
             foreach ($opts->navitems as $value) {
+                if (isset($value->titleidentifier) &&
+                    in_array($value->titleidentifier, ['mymoodle,admin', 'grades,grades', 'messages,message'])
+                ) {
+                    continue;
+                }
+
                 if ($isgameenabled &&  $this->page->course->id > 1 && $value->pix == 'i/user' && ($value->title == fullname($user) || $value->titleidentifier = 'profile,moodle')) {
                     $amls = new action_menu_link_secondary(
                         $evokeprofileurl,
                         new pix_icon($value->pix, $value->title, null, array('class' => 'iconsmall')),
-                        $value->title,
+                        $user->firstname . ' ' . $user->lastname,
                         array('class' => 'text-username')
                     );
 
