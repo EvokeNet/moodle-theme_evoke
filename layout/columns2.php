@@ -75,4 +75,15 @@ $themesettings = new \theme_evoke\util\theme_settings();
 
 $templatecontext = array_merge($templatecontext, $themesettings->footer_items());
 
+// Modify update password link.
+if ($PAGE->pagelayout == 'admin' && $PAGE->pagetype == 'user-preferences') {
+    $settings = $PAGE->settingsnav->find('usercurrentsettings', null);
+
+    foreach ($settings->children as $setting) {
+        if ($setting->has_children() && $children = $setting->find('changepassword', null)) {
+            $children->action = new moodle_url('https://auth.evokenet.org/auth/realms/evoke/account');
+        }
+    }
+}
+
 echo $OUTPUT->render_from_template('theme_evoke/columns2', $templatecontext);
