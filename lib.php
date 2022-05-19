@@ -250,8 +250,6 @@ function theme_evoke_get_setting($setting, $format = false) {
  * @param flat_navigation $flatnav
  */
 function theme_evoke_extend_flat_navigation(\flat_navigation $flatnav) {
-//    theme_evoke_add_certificatesmenuitem($flatnav);
-
     theme_evoke_delete_menuitems($flatnav);
 
     theme_evoke_add_coursesections_to_navigation($flatnav);
@@ -263,63 +261,6 @@ function theme_evoke_extend_flat_navigation(\flat_navigation $flatnav) {
     theme_evoke_add_evokeportfolio_menuitems($flatnav);
 
     theme_evoke_add_evokegame_course_menuitems($flatnav);
-}
-
-/**
- * Add items to flat navigation menu
- *
- * @param flat_navigation $flatnav
- *
- */
-function theme_evoke_add_certificatesmenuitem(\flat_navigation $flatnav) {
-    global $COURSE;
-
-    try {
-        if (!theme_evoke_has_certificates_plugin()) {
-            return;
-        }
-
-        $actionurl = new \moodle_url('/theme/evoke/certificates.php');
-
-        // Course page.
-        if ($COURSE->id > 1) {
-            $parentitem = $flatnav->find('competencies', \navigation_node::TYPE_SETTING);
-
-            if (!$parentitem || !$parentitem instanceof \flat_navigation_node) {
-                $parentitem = $flatnav->find('home', \navigation_node::TYPE_SETTING);
-            }
-
-            $actionurl = new \moodle_url('/theme/evoke/certificates.php', ['id' => $COURSE->id]);
-        }
-
-        if ($COURSE->id == 1) {
-            $parentitem = $flatnav->find('privatefiles', \navigation_node::TYPE_SETTING);
-
-            if (!$parentitem || (!empty($parentitem) && empty($parentitem->id))) {
-                return;
-            }
-        }
-
-        if (!is_null($parentitem->parent)) {
-            $certificatesitemoptions = [
-                'action' => $actionurl,
-                'text' => get_string('certificates', 'theme_evoke'),
-                'shorttext' => get_string('certificates', 'theme_evoke'),
-                'icon' => new pix_icon('i/export', ''),
-                'type' => \navigation_node::TYPE_SETTING,
-                'key' => 'certificates',
-                'parent' => $parentitem->parent
-            ];
-
-            $certificatesitem = new \flat_navigation_node($certificatesitemoptions, 0);
-
-            $flatnav->add($certificatesitem, $parentitem->key);
-        }
-    } catch (\coding_exception $e) {
-        debugging($e->getMessage(), DEBUG_DEVELOPER, $e->getTrace());
-    } catch (\moodle_exception $e) {
-        debugging($e->getMessage(), DEBUG_NORMAL, $e->getTrace());
-    }
 }
 
 /**
