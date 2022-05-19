@@ -250,7 +250,7 @@ function theme_evoke_get_setting($setting, $format = false) {
  * @param flat_navigation $flatnav
  */
 function theme_evoke_extend_flat_navigation(\flat_navigation $flatnav) {
-    theme_evoke_add_certificatesmenuitem($flatnav);
+//    theme_evoke_add_certificatesmenuitem($flatnav);
 
     theme_evoke_delete_menuitems($flatnav);
 
