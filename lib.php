@@ -261,6 +261,8 @@ function theme_evoke_extend_flat_navigation(\flat_navigation $flatnav) {
     theme_evoke_add_evokeportfolio_menuitems($flatnav);
 
     theme_evoke_add_evokegame_course_menuitems($flatnav);
+
+    theme_evoke_changelink_menuitems($flatnav);
 }
 
 /**
@@ -497,6 +499,20 @@ function theme_evoke_add_evokegame_course_menuitems(\flat_navigation $flatnav) {
         $menuitem->parent = $participantsitem->parent;
 
         $flatnav->add($menuitem, $parentkey);
+    }
+}
+
+/**
+ * Change navigation items link
+ *
+ * @param flat_navigation $flatnav
+ */
+function theme_evoke_changelink_menuitems(\flat_navigation $flatnav) {
+
+    $item = $flatnav->find('home');
+
+    if ($item) {
+        $item->action = 'https://wbedpolicyacademy.org/home';
     }
 }
 
