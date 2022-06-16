@@ -365,10 +365,8 @@ function theme_evoke_rename_menuitems(\flat_navigation $flatnav) {
  * @param flat_navigation $flatnav
  */
 function theme_evoke_add_evokehome_menuitems(\flat_navigation $flatnav) {
-    $actionurl = new moodle_url('/?redirect=0');
-
     $menuitemoptions = [
-        'action' => $actionurl,
+        'action' => 'https://wbedpolicyacademy.org/home',
         'text' => get_string('sitehome'),
         'shorttext' => get_string('sitehome'),
         'icon' => new pix_icon('a/setting', ''),
