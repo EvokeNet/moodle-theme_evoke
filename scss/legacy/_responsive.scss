@@ -149,10 +149,6 @@
       overflow: hidden;
       padding: 0;
     }
-
-    &.drawer-open-left {
-      margin-left: 55px;
-    }
   }
 
   #page-login-index.evoke-login {
@@ -186,8 +182,6 @@
 
 @media (min-width: 768px) {
   body {
-    margin-left: 55px;
-
     &.drawer-open-left {
       margin-left: 280px;
     }

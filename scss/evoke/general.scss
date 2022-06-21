@@ -338,6 +338,15 @@ nav.navbar {
   display: flex;
 }
 
+nav.navbar ul.navbar-nav .nav-item#themesettings-control {
+  display: flex;
+  color: #00f0a6;
+  font-size: 22px;
+  align-items: center;
+  cursor: pointer;
+  padding: 0.2rem 0.8rem 0;
+}
+
 @media (min-width: 1200px) {
   .pagelayout-incourse {
     #page {

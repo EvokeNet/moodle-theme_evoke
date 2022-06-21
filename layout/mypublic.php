@@ -40,8 +40,6 @@ $navdraweropen = false;
 $draweropenright = false;
 
 if (isloggedin()) {
-    $hasdrawertoggle = true;
-    $navdraweropen = (get_user_preferences('drawer-open-nav', 'true') == 'true');
     $draweropenright = (get_user_preferences('sidepre-open', 'true') == 'true');
 }
 

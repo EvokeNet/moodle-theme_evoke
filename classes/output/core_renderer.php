@@ -457,6 +457,22 @@ class core_renderer extends \core_renderer {
         );
         $actionmenu->set_alignment(action_menu::TR, action_menu::BR);
         $actionmenu->set_nowrap_on_items();
+
+        // Adiciona adm do site se for administrador.
+        if (has_capability('moodle/site:configview', \context_system::instance())) {
+            $pix = new pix_icon('t/preferences', get_string('administrationsite'), null, array('class' => 'iconsmall'));
+            $aml = new action_menu_link_secondary(
+                new moodle_url('/admin/search.php'),
+                $pix,
+                get_string('administrationsite'),
+                array('class' => 'icon')
+            );
+
+            $actionmenu->add($aml);
+
+            $actionmenu->add($divider);
+        }
+
         if ($withlinks) {
             $navitemcount = count($opts->navitems);
             $idx = 0;

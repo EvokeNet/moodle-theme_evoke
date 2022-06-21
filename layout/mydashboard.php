@@ -29,12 +29,10 @@ user_preference_allow_ajax_update('sidepre-open', PARAM_ALPHA);
 
 require_once($CFG->libdir . '/behat/lib.php');
 
+$navdraweropen = false;
+$draweropenright = false;
 if (isloggedin()) {
-    $navdraweropen = (get_user_preferences('drawer-open-nav', 'true') == 'true');
     $draweropenright = (get_user_preferences('sidepre-open', 'true') == 'true');
-} else {
-    $navdraweropen = false;
-    $draweropenright = false;
 }
 
 $blockshtml = $OUTPUT->blocks('side-pre');
@@ -60,7 +58,7 @@ $templatecontext = [
     'sidepreblocks' => $blockshtml,
     'hasblocks' => $hasblocks,
     'bodyattributes' => $bodyattributes,
-    'hasdrawertoggle' => true,
+    'hasdrawertoggle' => false,
     'navdraweropen' => $navdraweropen,
     'draweropenright' => $draweropenright,
     'regionmainsettingsmenu' => $regionmainsettingsmenu,

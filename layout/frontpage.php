@@ -37,12 +37,8 @@ if (isloggedin()) {
     $blockshtml = $OUTPUT->blocks('side-pre');
     $hasblocks = strpos($blockshtml, 'data-block=') !== false;
 
-    $navdraweropen = (get_user_preferences('drawer-open-nav', 'true') == 'true');
+    $navdraweropen = false;
     $draweropenright = (get_user_preferences('sidepre-open', 'true') == 'true');
-
-    if ($navdraweropen) {
-        $extraclasses[] = 'drawer-open-left';
-    }
 
     if ($draweropenright && $hasblocks) {
         $extraclasses[] = 'drawer-open-right';
@@ -59,7 +55,7 @@ if (isloggedin()) {
         'sidepreblocks' => $blockshtml,
         'hasblocks' => $hasblocks,
         'bodyattributes' => $bodyattributes,
-        'hasdrawertoggle' => true,
+        'hasdrawertoggle' => false,
         'navdraweropen' => $navdraweropen,
         'draweropenright' => $draweropenright,
         'regionmainsettingsmenu' => $regionmainsettingsmenu,
