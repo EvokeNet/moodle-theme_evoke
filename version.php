@@ -1,21 +1,7 @@
 <?php
-// This file is part of Moodle - http://moodle.org/
-//
-// Moodle is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// Moodle is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Evoke.
+ * Evoke
  *
  * @package    theme_evoke
  * @copyright  2022 Willian Mano - conecti.me
@@ -30,18 +16,18 @@ defined('MOODLE_INTERNAL') || die();
 $plugin->component = 'theme_evoke';
 
 // This is the version of the plugin.
-$plugin->version = 2021052200;
+$plugin->version = 2022093007;
 
 // This is the named version.
-$plugin->release = '3.11.05';
+$plugin->release = '4.0.7';
 
 // This is a stable release.
 $plugin->maturity = MATURITY_STABLE;
 
 // This is the version of Moodle this plugin requires.
-$plugin->requires = 2021051700;
+$plugin->requires = 2022041200;
 
 // This is a list of plugins, this plugin depends on (and their versions).
 $plugin->dependencies = [
-    'theme_boost' => 2021051700
+    'theme_boost' => 2022041900
 ];

@@ -1,0 +1,31 @@
+$primary:       #ff0540;
+$success:       #00f0a6;
+$info:          #1ba2f6;
+$warning:       #edd661;
+$danger:        #ff6666;
+$secondary:     #ea39b8;
+$light:         #44d9e8;
+$dark:          #170229;
+
+$theme-colors: ();
+$theme-colors: map-merge(
+    (
+            "primary":    $primary,
+            "secondary":  $secondary,
+            "success":    $success,
+            "info":       $info,
+            "warning":    $warning,
+            "danger":     $danger,
+            "light":      $light,
+            "dark":       $dark
+    ),
+    $theme-colors
+);
+
+$evoke-bg-navbar: #6f42c1 !default;
+$evoke-bg: #1a0a33 !default;
+$evoke-bg-dark: #170229 !default;
+$evoke-bg-dark-secondary: lighten(#17032a, 10%) !default;
+$evoke-bg-dark-tertiary: lighten(#17032a, 5%) !default;
+$evoke-body-color: #c1c1c1 !default;
+$evoke-body-headers-color: #32fbe2 !default;

@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Frontpage layout for the evoke theme.
+ * A drawer based layout for the evoke theme.
  *
  * @package    theme_evoke
  * @copyright  2022 Willian Mano {@link https://conecti.me}
@@ -56,7 +56,15 @@ $hasblocks = (strpos($blockshtml, 'data-block=') !== false || !empty($addblockbu
 if (!$hasblocks) {
     $blockdraweropen = false;
 }
-$courseindex = core_course_drawer();
+
+$themesettings = new \theme_evoke\util\settings();
+
+if (!$themesettings->enablecourseindex) {
+    $courseindex = '';
+} else {
+    $courseindex = core_course_drawer();
+}
+
 if (!$courseindex) {
     $courseindexopen = false;
 }
@@ -66,7 +74,7 @@ $forceblockdraweropen = $OUTPUT->firstview_fakeblocks();
 $secondarynavigation = false;
 $overflow = '';
 if ($PAGE->has_secondary_navigation()) {
-    $secondary = $PAGE->secondarynav;
+    $secondary = \theme_evoke\util\secondarynavigation::get_general_nav_items();
 
     if ($secondary->get_children_key_list()) {
         $tablistnav = $PAGE->has_tablist_secondary_navigation();
@@ -92,7 +100,6 @@ $header = $PAGE->activityheader;
 $headercontent = $header->export_for_template($renderer);
 
 $bodyattributes = $OUTPUT->body_attributes($extraclasses);
-
 $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
     'output' => $OUTPUT,
@@ -112,17 +119,21 @@ $templatecontext = [
     'hasregionmainsettingsmenu' => !empty($regionmainsettingsmenu),
     'overflow' => $overflow,
     'headercontent' => $headercontent,
-    'addblockbutton' => $addblockbutton
+    'addblockbutton' => $addblockbutton,
+    'enablecourseindex' => $themesettings->enablecourseindex
 ];
-
-$themesettings = new \theme_evoke\util\settings();
 
 $templatecontext = array_merge($templatecontext, $themesettings->footer());
 
-if (isloggedin()) {
-    echo $OUTPUT->render_from_template('theme_evoke/drawers', $templatecontext);
-} else {
-//    $templatecontext = array_merge($templatecontext, $themesettings->frontpage());
+// Modify update password link.
+if ($PAGE->pagelayout == 'admin' && $PAGE->pagetype == 'user-preferences') {
+    $settings = $PAGE->settingsnav->find('usercurrentsettings', null);
 
-    echo $OUTPUT->render_from_template('theme_evoke/frontpage', $templatecontext);
+    foreach ($settings->children as $setting) {
+        if ($setting->has_children() && $children = $setting->find('changepassword', null)) {
+            $children->action = new moodle_url('https://auth.evokenet.org/auth/realms/evoke/account');
+        }
+    }
 }
+
+echo $OUTPUT->render_from_template('theme_evoke/drawers', $templatecontext);

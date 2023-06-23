@@ -1,91 +1,93 @@
-{{!
-    This file is part of Moodle - http://moodle.org/
+{{{ output.doctype }}}
+<html {{{ output.htmlattributes }}}>
+<head>
+    <title>{{{ output.page_title }}}</title>
+    <link rel="shortcut icon" href="{{{ output.favicon }}}" />
+    {{{ output.standard_head_html }}}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    Moodle is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+    <script src="{{config.wwwroot}}/theme/evoke/js/libs/gsap/gsap.min.js" defer></script>
+    <script src="{{config.wwwroot}}/theme/evoke/js/libs/gsap/ScrollTrigger.min.js" defer></script>
+    <script src="{{config.wwwroot}}/theme/evoke/js/libs/gsap/ScrollSmoother.min.js" defer></script>
 
-    Moodle is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+    <script src="{{config.wwwroot}}/theme/evoke/js/frontpage.js" defer></script>
 
-    You should have received a copy of the GNU General Public License
-    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-}}
-{{!
-    @template theme_evoke/frontpage
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+</head>
 
-    Admin time setting template.
+<body {{{ bodyattributes }}} style="background-image: url({{config.wwwroot}}/theme/evoke/pix/frontpage/bg.jpg);">
 
-    Evoke Frontpage layout template.
+<div class="wrapper">
+    <div class="content">
 
-    Context variables required for this template:
-    * sitename - The name of the site
-    * output - The core renderer for the page
-    * bodyattributes - attributes for the body tag as a string of html attributes
-    * sidepreblocks - HTML for the blocks
-    * hasblocks - true if there are blocks on this page
-    * navdraweropen - true if the nav drawer should be open on page load
-    * regionmainsettingsmenu - HTML for the region main settings menu
-    * hasregionmainsettingsmenu - There is a region main settings menu on this page.
-
-    Example context (json):
-    {
-        "sitename": "Moodle",
-        "output": {
-            "doctype": "<!DOCTYPE html>",
-            "page_title": "Test page",
-            "favicon": "favicon.ico",
-            "main_content": "<h1>Headings make html validators happier</h1>"
-         },
-        "bodyattributes":"",
-        "sidepreblocks": "<h2>Blocks html goes here</h2>",
-        "hasblocks":true,
-        "navdraweropen":true,
-        "regionmainsettingsmenu": "",
-        "hasregionmainsettingsmenu": false
-    }
-}}
-    {{>theme_evoke/inc_start}}
-
-    <div id="page" class="container-fluid d-print-block">
-
-        {{>theme_evoke/slideshow}}
-
-        {{{ output.full_header }}}
-
-        {{#alertcontent}}
-            <div class="alertbox">
-                <div class="alert alert-warning" role="alert">
-                    {{{alertcontent}}}
+        <header class="hero-section">
+            <img data-speed=".6" class="hero" src="{{config.wwwroot}}/theme/evoke/pix/frontpage/hero.png" alt="Evoke Project" >
+            <div class="container">
+                <div data-speed=".75" class="main-header">
+                    <h1 class="main-title">evoke project
+                        <a class="btn btn-link" href="{{config.wwwroot}}/login/"><i class="fa fa-user-secret small"></i> access project</a>
+                    </h1>
                 </div>
             </div>
-            <div style="clear:both;"></div>
-        {{/alertcontent}}
+        </header>
 
-        <div id="page-content" class="row pb-3 d-print-block">
-            <div id="region-main-box" class="col-12">
-                {{#hasregionmainsettingsmenu}}
-                <div id="region-main-settings-menu" class="d-print-none">
-                    <div> {{{ output.region_main_settings_menu }}} </div>
-                </div>
-                {{/hasregionmainsettingsmenu}}
-                <section id="region-main">
-                    <div class="card">
-                        <div class="card-body">
-                            {{#hasregionmainsettingsmenu}}
-                                <div class="region_main_settings_menu_proxy"></div>
-                            {{/hasregionmainsettingsmenu}}
-                            {{{ output.course_content_header }}}
-                            {{{ output.main_content }}}
-                            {{{ output.course_content_footer }}}
+        <div class="portfolio">
+            <div class="container">
+                <main class="gallery">
+
+                    <div data-speed=".9" class="gallery__left">
+
+                        <img class="gallery__item" src="{{config.wwwroot}}/theme/evoke/pix/frontpage/1.jpg" alt="Alt">
+                        <img class="gallery__item" src="{{config.wwwroot}}/theme/evoke/pix/frontpage/2.jpg" alt="Alt">
+
+                        <div class="text-block gallery__item">
+                            <h2 class="text-block__h">Creative floating scroll with amazing parallax effect</h2>
+                            <p class="text-block__p">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor amount scrolling.</p>
                         </div>
+
+                        <img class="gallery__item" src="{{config.wwwroot}}/theme/evoke/pix/frontpage/6.jpg" alt="Alt">
+
                     </div>
-                </section>
+
+                    <div data-speed="1.1" class="gallery__right">
+
+                        <div class="text-block gallery__item">
+                            <h2 class="text-block__h">Creative floating scroll with amazing parallax effect</h2>
+                            <p class="text-block__p">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor amount scrolling.</p>
+                        </div>
+
+                        <img class="gallery__item" src="{{config.wwwroot}}/theme/evoke/pix/frontpage/4.jpg" alt="Alt">
+                        <img class="gallery__item" src="{{config.wwwroot}}/theme/evoke/pix/frontpage/5.jpg" alt="Alt">
+                        <img class="gallery__item" src="{{config.wwwroot}}/theme/evoke/pix/frontpage/3.jpg" alt="Alt">
+
+                    </div>
+
+                </main>
             </div>
         </div>
-    </div>
 
-    {{>theme_evoke/inc_end}}
+    </div>
+</div>
+
+<div id="page-wrapper" class="d-print-block d-none">
+
+    {{{ output.standard_top_of_body_html }}}
+
+    {{{ output.course_content_header }}}
+    {{{ output.main_content }}}
+    {{{ output.course_content_footer }}}
+
+    {{{ output.standard_after_main_region_html }}}
+</div>
+
+</body>
+</html>
+{{#js}}
+    M.util.js_pending('theme_boost/loader');
+    require(['theme_boost/loader', 'theme_boost/drawer'], function(Loader, Drawer) {
+        Drawer.init();
+        M.util.js_complete('theme_boost/loader');
+    });
+{{/js}}

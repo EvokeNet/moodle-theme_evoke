@@ -1,0 +1,75 @@
+#page-site-index.notloggedin {
+    background-color: $evoke-bg-dark;
+    color: $evoke-body-color;
+    font-family: 'Raleway', sans-serif;
+    overflow-x: hidden;
+
+    h1 {
+        color: $evoke-body-color;
+
+        .btn {
+            font-size: calc(calc(1vw + 1vh) * 2);
+        }
+    }
+
+    /* will-change */
+    .content, .hero, .main-header, .gallery > * {
+        will-change: transform;
+    }
+    .hero {
+        width: calc((1vw + 1vh) * 36);
+        position: absolute;
+        left: 37vw;
+        top: 22vh;
+        z-index: -1;
+    }
+    .main-header {
+        height: 100vh;
+    }
+    .container {
+        padding: 0 7vw;
+        max-width: 100%;
+    }
+    .main-title {
+        font-size: calc(calc(1vw + 1vh) * 8);
+        position: absolute;
+        width: min-content;
+        bottom: 12vh;
+        line-height: .9;
+    }
+    .gallery {
+        display: flex;
+        padding: calc(calc(1vw + 1vh) * 8) 0;
+    }
+    .gallery > * {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    .gallery__item {
+        max-width: calc(calc(1vw + 1vh) * 21);
+        margin-bottom: calc(calc(1vw + 1vh) * 7.5);
+        max-height: 180vh;
+        border-radius: 8px;
+    }
+    .gallery__left {
+        margin-top: calc(calc(calc(1vw + 1vh) * 7.5) * 1.75);
+    }
+    .gallery__right .gallery__item {
+        margin: calc(calc(1vw + 1vh) * 7.5) 0 0 0;
+    }
+    .text-block {
+        color: #cdc6c3;
+        position: relative;
+    }
+    .text-block__h {
+        font-size: 2rem;
+        line-height: 2.4rem;
+        color: #f4efec;
+        margin-bottom: 1.5rem;
+    }
+    .text-block__p {
+        line-height: 1.75;
+    }
+}
